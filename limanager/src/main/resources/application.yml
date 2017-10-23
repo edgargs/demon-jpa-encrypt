@@ -1,0 +1,14 @@
+hibernate:
+    cache:
+        queries: false
+        use_second_level_cache: false
+        use_query_cache: false
+dataSource:
+    pooled: true
+    jmxExport: true
+    driverClassName: com.mysql.jdbc.Driver
+    dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    username: lidbus
+    password: testing
+    dbCreate: create-drop
+    url: jdbc:mysql://127.0.0.1:3306/lidb

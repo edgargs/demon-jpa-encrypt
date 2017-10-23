@@ -1,0 +1,9 @@
+
+version "0.1"
+group "liguiweb"
+
+grails {
+    plugins {
+        compile project(':liutil')
+    }
+}

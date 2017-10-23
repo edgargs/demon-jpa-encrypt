@@ -11,8 +11,8 @@ buildscript {
 }
 
 ext {
-    grailsApps = ['app']
-	springBootApps = ['demo']
+    grailsApps = ['liguiweb']
+	springBootApps = ['limanager']
 }
 
 subprojects { project ->
@@ -77,6 +77,8 @@ subprojects { project ->
 				testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
 				testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 				
+				compile 'org.grails.plugins:spring-security-core:3.2.0.M1'
+				runtime 'mysql:mysql-connector-java:5.1.40'
 			}
 		}
 		
