@@ -18,6 +18,8 @@ version = '0.0.1-SNAPSHOT'
 
 dependencies {
 	compile project(':liutil')
-	
+
+	compile "org.springframework.boot:spring-boot-starter-logging"
+
 	runtime 'mysql:mysql-connector-java:5.1.40'
 }

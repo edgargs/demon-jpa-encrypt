@@ -10,5 +10,8 @@ dataSource:
     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     username: lidbus
     password: testing
-    dbCreate: create-drop
+    //dbCreate: create-drop
     url: jdbc:mysql://127.0.0.1:3306/lidb
+
+limanager:
+    keyEncrypt: yacom741yacom852yacom963
