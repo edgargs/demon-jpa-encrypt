@@ -1,4 +1,4 @@
-import ch.qos.logback.core.encoder.LayoutWrappingEncoder
+
 import com.hacom.liguiweb.util.CryptoConverter
 import com.hacom.liguiweb.util.LogFileHeaderPatternLayout
 import grails.util.BuildSettings
@@ -36,17 +36,27 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
-
-conversionRule("sample", CryptoConverter)
-appender("FILE", FileAppender) {
-    file = "${targetDir}/liguiweb.log"
+def isDevelopmentMode = Environment.isDevelopmentMode()
+def logFile = "liguiweb.log"
+conversionRule("msgencrypt", CryptoConverter)
+appender("FILE", RollingFileAppender) {
+    file = "${targetDir}/${logFile}"
     append = true
     encoder(LayoutWrappingEncoder) {
         layout(LogFileHeaderPatternLayout) {
-            filePath = "${targetDir}/liguiweb.log"
-            header = "con,thread,sample,msg"
-            pattern = "%-4relative,[%thread],%sample,%msg%n"
+            filePath = "${targetDir}/${logFile}"
+            header = "datetime,level,thread,msg"
+            def typemsg = "%msgencrypt"
+            if (isDevelopmentMode)
+                typemsg = "%msg"
+            pattern = "%d{yyyy-MM-dd HH:mm:ss.SSS},%5p,[%thread],"+typemsg+"%n"
         }
+    }
+    rollingPolicy(SizeAndTimeBasedRollingPolicy) {
+        fileNamePattern = "${targetDir}/${logFile}.%d{yyyy-MM-dd}_%i.zip" //diario
+        maxFileSize = "10MB" //archivos de 10 megas
+        maxHistory = 30 //historia de 30 dias
+        totalSizeCap = "20GB" // total de log (todos los archivos)
     }
 }
 logger("com.hacom.liguiweb", DEBUG, ['FILE'], false)

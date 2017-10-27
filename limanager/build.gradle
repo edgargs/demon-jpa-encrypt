@@ -23,3 +23,7 @@ dependencies {
 
 	runtime 'mysql:mysql-connector-java:5.1.40'
 }
+
+bootRun {
+	jvmArgs = ["-Dlogging.path=build"] //, "-Ddevelopment.mode=ON"]
+}
