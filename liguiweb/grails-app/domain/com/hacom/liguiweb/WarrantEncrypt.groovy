@@ -1,6 +1,6 @@
 package com.hacom.liguiweb
 
-import com.hacom.liguiweb.util.LIEncryption
+import com.hacom.li.util.LIEncryption
 import groovy.util.logging.Slf4j
 import groovy.transform.ToString
 

@@ -1,6 +1,6 @@
 package com.hacom.limanager
 
-import com.hacom.liguiweb.util.LIEncryption
+import com.hacom.li.util.LIEncryption
 import groovy.sql.Sql
 import groovy.util.logging.Slf4j
 
@@ -16,10 +16,12 @@ class MultiServer {
 	static void main(String[] args) {
 
 		LIEncryption.keyEncrypt = ConfigManager.keyEncrypt
-
+		sleep(3000)
 		while(true) {
+			log.warn "key: $LIEncryption.keyEncrypt"
+			log.debug LIEncryption.encrypt("Edgar")
 			def countWarrants = sql.firstRow("SELECT * FROM warrant")
-			log.info LIEncryption.decrypt(countWarrants.msisdn)
+			log.info LIEncryption.decrypt(countWarrants?.msisdn)
 			sleep(3000)
 		}
 

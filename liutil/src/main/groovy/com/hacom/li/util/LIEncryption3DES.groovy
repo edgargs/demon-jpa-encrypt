@@ -1,10 +1,10 @@
-package com.hacom.liguiweb.util
+package com.hacom.li.util
 
 import groovy.util.logging.Slf4j
 import org.apache.commons.codec.binary.Hex
 
 import javax.crypto.Cipher
-import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 import java.security.Key
 
@@ -14,7 +14,7 @@ import java.security.Key
  * https://gist.github.com/lyhcode/3637109
  */
 @Slf4j
-class LIEncryption {
+class LIEncryption3DES {
 
     static String keyEncrypt = "" //"prueba12prueba11prueba10"
 

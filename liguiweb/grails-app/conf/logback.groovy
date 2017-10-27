@@ -1,6 +1,6 @@
 
-import com.hacom.liguiweb.util.CryptoConverter
-import com.hacom.liguiweb.util.LogFileHeaderPatternLayout
+import com.hacom.li.util.CryptoConverter
+import com.hacom.li.util.LogFileHeaderPatternLayout
 import grails.util.BuildSettings
 import grails.util.Environment
 import org.springframework.boot.logging.logback.ColorConverter

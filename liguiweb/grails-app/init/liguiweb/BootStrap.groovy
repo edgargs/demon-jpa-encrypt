@@ -1,6 +1,6 @@
 package liguiweb
 
-import com.hacom.liguiweb.util.LIEncryption
+import com.hacom.li.util.LIEncryption
 import grails.core.GrailsApplication
 import groovy.util.logging.Slf4j
 

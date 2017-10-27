@@ -1,4 +1,4 @@
-package com.hacom.liguiweb.util
+package com.hacom.li.util
 
 import ch.qos.logback.classic.PatternLayout
 

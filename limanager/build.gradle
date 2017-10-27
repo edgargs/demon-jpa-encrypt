@@ -25,5 +25,5 @@ dependencies {
 }
 
 bootRun {
-	jvmArgs = ["-Dlogging.path=build"] //, "-Ddevelopment.mode=ON"]
+	jvmArgs = ["-Dlogging.path=build", "-Ddevelopment.mode=ON"]
 }
