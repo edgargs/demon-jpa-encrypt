@@ -21,7 +21,7 @@ class Warrant {
 	int period
 	int timeslot_enable
 	int ia_enable
-	String filepath
+	String filepath = "."
 	int li_type
 	Date begin_datetime
 	Date end_datetime
@@ -32,7 +32,8 @@ class Warrant {
 		targetid_type inList: [1,2]
 		msisdn nullable: true, maxSize: 20
 		imei nullable: true, maxSize: 20
-		
+		li_type inList: [1,2]
+		filepath nullable: true
     }
 
 	static mapping = {

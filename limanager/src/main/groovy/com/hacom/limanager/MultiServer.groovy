@@ -3,6 +3,7 @@ package com.hacom.limanager
 import com.hacom.li.util.LIEncryption
 import groovy.sql.Sql
 import groovy.util.logging.Slf4j
+import org.springframework.beans.factory.annotation.Autowired
 
 @Slf4j
 class MultiServer {

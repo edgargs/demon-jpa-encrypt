@@ -19,7 +19,60 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="warrant" />
+            <f:with bean="warrant">
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.liid.label"/></label>
+                    <f:display property="liid"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.targetid_type.label"/></label>
+                    <f:display property="targetid_type"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.msisdn.label"/></label>
+                    <f:display property="msisdn"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.imei.label"/></label>
+                    <f:display property="imei"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.warrant_date.label"/></label>
+                    <f:display property="warrant_date"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.reference_name.label"/></label>
+                    <f:display property="reference_name"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.begin_datetime.label"/></label>
+                    <f:display property="begin_datetime"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.end_datetime.label"/></label>
+                    <f:display property="end_datetime"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.lemf_ip.label"/></label>
+                    <f:display property="lemf_ip"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.lemf_port.label"/></label>
+                    <f:display property="lemf_port"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.period.label"/></label>
+                    <f:display property="period"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.li_type.label"/></label>
+                    <f:display property="li_type"/>
+                </div>
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.observations.label"/></label>
+                    <f:display property="observations"/>
+                </div>
+            </f:with>
             <g:form resource="${this.warrant}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.warrant}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

@@ -132,7 +132,7 @@ environments:
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
 liguiweb:
-    keyEncrypt: yacom741yacom852yacom963
+    keyEncrypt: yacom741yacom852 #yacom963
 
 grails:
     databinding:
