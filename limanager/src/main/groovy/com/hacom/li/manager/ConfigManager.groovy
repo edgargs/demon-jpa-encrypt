@@ -1,4 +1,4 @@
-package com.hacom.limanager
+package com.hacom.li.manager
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component

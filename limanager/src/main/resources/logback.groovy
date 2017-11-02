@@ -57,6 +57,6 @@ appender("FILE", RollingFileAppender) {
         totalSizeCap = "20GB" // total de log (todos los archivos)
     }
 }
-logger("com.hacom.limanager", DEBUG, ['FILE'], false)
+logger("com.hacom.li", DEBUG, ['FILE'], false)
 
 root(ERROR, ['STDOUT'])

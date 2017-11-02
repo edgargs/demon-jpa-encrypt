@@ -1,4 +1,4 @@
-package com.hacom.limanager
+package com.hacom.li.manager
 
 import com.hacom.li.util.LIEncryption
 
@@ -19,7 +19,7 @@ class WarrantListener {
 
     @PreUpdate
     public void userPreUpdate(Warrant ob) {
-        System.out.println("Listening User Pre Update : " + ob.getName());
+
     }
 
     @PostLoad

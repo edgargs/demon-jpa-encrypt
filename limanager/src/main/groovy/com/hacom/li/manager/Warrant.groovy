@@ -1,4 +1,6 @@
-package com.hacom.limanager
+package com.hacom.li.manager
+
+import groovy.transform.ToString
 
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -11,6 +13,7 @@ import javax.persistence.Id
  */
 @Entity
 @EntityListeners(WarrantListener.class)
+@ToString
 class Warrant {
 
     @Id
