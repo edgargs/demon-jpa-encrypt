@@ -26,6 +26,8 @@ dependencies {
 
 	// Use MySQL Connector-J
 	compile 'mysql:mysql-connector-java'
+
+	compile('org.codehaus.groovy.modules.http-builder:http-builder:0.7')
 }
 
 bootRun {
