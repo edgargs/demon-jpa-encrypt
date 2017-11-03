@@ -38,7 +38,8 @@ class ManagerApplication {
 					log.debug "ManagerApplication=$it.liid:$it.period"
 
 					verifyProcessLI(Integer.parseInt(it.liid),
-									Integer.parseInt(it.period) );
+									Integer.parseInt(it.period),
+									Integer.parseInt(it.msisdn) );
 				}
 			}
 			//Desactiva hilos
@@ -57,18 +58,18 @@ class ManagerApplication {
 		}
 	}
 
-	static ConcurrentHashMap<Integer,ServerUDPThread> devices = new ConcurrentHashMap<>();
+	static ConcurrentHashMap<Integer,SenderThread> devices = new ConcurrentHashMap<>();
 
-	def verifyProcessLI(int liid, int period) {
+	def verifyProcessLI(int liid, int period, int msisdn) {
 		synchronized(devices) {
-			ServerUDPThread hilo;
+			SenderThread hilo;
 
 			hilo = devices.get(liid);
 
 			if(hilo == null || hilo.getState() == Thread.State.TERMINATED){
 				devices.remove(liid);
 
-				hilo = new ServerUDPThread(liid:liid, period:period);
+				hilo = new SenderThread(liid:liid, period:period, msisdn: msisdn);
 				devices.put(liid, hilo);
 				hilo.start();
 				log.debug("Nuevo proceso: $liid");
@@ -80,7 +81,7 @@ class ManagerApplication {
 
 	def detentionProcess(int liid) {
 		synchronized(devices) {
-			ServerUDPThread hilo;
+			SenderThread hilo;
 
 			hilo = devices.get(liid);
 

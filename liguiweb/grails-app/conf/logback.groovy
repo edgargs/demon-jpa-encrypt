@@ -1,10 +1,12 @@
-
+import ch.qos.logback.classic.filter.LevelFilter
 import com.hacom.li.util.CryptoConverter
 import com.hacom.li.util.LogFileHeaderPatternLayout
 import grails.util.BuildSettings
 import grails.util.Environment
 import org.springframework.boot.logging.logback.ColorConverter
 import org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter
+import static ch.qos.logback.core.spi.FilterReply.DENY
+import static ch.qos.logback.core.spi.FilterReply.ACCEPT
 
 import java.nio.charset.Charset
 
@@ -26,16 +28,20 @@ appender('STDOUT', ConsoleAppender) {
 }
 
 def targetDir = BuildSettings.TARGET_DIR
-if (Environment.isDevelopmentMode() && targetDir != null) {
-    appender("FULL_STACKTRACE", FileAppender) {
-        file = "${targetDir}/stacktrace.log"
-        append = true
-        encoder(PatternLayoutEncoder) {
-            pattern = "%level %logger - %msg%n"
-        }
+
+appender("FULL_STACKTRACE", FileAppender) {
+    file = "${targetDir}/stacktrace.log"
+    append = true
+    encoder(PatternLayoutEncoder) {
+        pattern = "%level %logger - %msg%n"
     }
-    logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
+    filter(LevelFilter) {
+        level = ERROR
+        onMismatch = DENY
+        onMatch = ACCEPT
+    }
 }
+
 def isDevelopmentMode = Environment.isDevelopmentMode()
 def logFile = "liguiweb.log"
 conversionRule("msgencrypt", CryptoConverter)
@@ -58,7 +64,13 @@ appender("FILE", RollingFileAppender) {
         maxHistory = 30 //historia de 30 dias
         totalSizeCap = "20GB" // total de log (todos los archivos)
     }
+    //https://gist.github.com/finnjohnsen/87b14223aba07cf5f7c3c84c4f474e0f
+    filter(LevelFilter) {
+        level = ERROR
+        onMismatch = ACCEPT
+        onMatch = DENY
+    }
 }
-logger("com.hacom.liguiweb", DEBUG, ['FILE'], false)
+logger("com.hacom.liguiweb", DEBUG, ['FILE','FULL_STACKTRACE'], false)
 
 root(ERROR, ['STDOUT'])

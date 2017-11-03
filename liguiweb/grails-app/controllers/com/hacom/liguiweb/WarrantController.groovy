@@ -45,6 +45,8 @@ class WarrantController {
             warrantEncryptService.save(warrantEncrypt)            
             warrant.id = warrantEncrypt.id
         } catch (ValidationException e) {
+            log.warn "Error al grabar Warrant"
+            log.error("Error al grabar Warrant",e)
             respond warrant.errors, view:'create'
             return
         }

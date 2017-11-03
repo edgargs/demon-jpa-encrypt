@@ -11,14 +11,14 @@ class Warrant {
     int id
     
 	String liid
-	int targetid_type
+	int targetid_type = 1
 	String msisdn
 	String imei
 	Date warrant_date
 	String reference_name
 	String lemf_ip
 	int lemf_port
-	int period
+	int period = 1
 	int timeslot_enable
 	int ia_enable
 	String filepath = "."
@@ -30,10 +30,11 @@ class Warrant {
     static constraints = {
 		liid maxSize: 5
 		targetid_type inList: [1,2]
-		msisdn nullable: true, maxSize: 20
+		//msisdn nullable: true, maxSize: 20
 		imei nullable: true, maxSize: 20
 		li_type inList: [1,2]
 		filepath nullable: true
+		period min: 1
     }
 
 	static mapping = {
@@ -41,8 +42,4 @@ class Warrant {
         version false
     }
 
-	/*def beforeValidate() {
-		log.debug "warrant_date: $warrant_date"
-		log.debug "begin_datetime: $begin_datetime"
-	}*/
 }

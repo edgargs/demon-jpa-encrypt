@@ -8,9 +8,10 @@ import groovyx.net.http.*
  * Created by Edgar Rios on 02/11/2017.
  */
 @Slf4j
-class ServerUDPThread extends Thread{
+class SenderThread extends Thread{
 
     int liid
+    int msisdn
     int period
     boolean detener
 
@@ -18,18 +19,16 @@ class ServerUDPThread extends Thread{
         log.debug "ServerUDPThread=$liid:$period"
         detener = false;
         while(!detener) {
-            sendPOSTXML_MC(liid)
+            sendPOSTXML(liid,msisdn)
             sleep(period*60*1000)
         }
     }
-
-    def sendPOSTXML_MC(def p_liid) {
-        log.debug "Respuesta envio $liid: OK"
-    }
-
     //https://stackoverflow.com/questions/28356283/groovy-httpbuilder-post-xml-with-basic-authentication
-    def sendPOSTXML(def p_liid) {
-        //def p_liid = 23434
+    def sendPOSTXML(def p_liid, def p_msisdn) {
+        if(true) {
+            log.debug "Respuesta envio $p_liid-$p_msisdn: OK"
+            return;
+        }
         def p_xml = '''
             <svc_init>
             <hdr>
@@ -42,7 +41,7 @@ class ServerUDPThread extends Thread{
              <slir res_type=\"SYNC\">
                  <msids>
                      <msid>
-                         541136525237
+                         $p_msisdn
                      </msid>
                  </msids>
                  <loc_type type=\"CURRENT\"/>

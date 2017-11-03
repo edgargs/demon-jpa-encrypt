@@ -29,9 +29,10 @@ class WarrantEncrypt {
 
 	Date dateCreated
 	Date lastUpdated
-	int status
+	int status = 1
     
     static constraints = {
+		imei nullable: true
     }
     
     static mapping = {
@@ -51,12 +52,12 @@ class WarrantEncrypt {
         end_datetime sqlType: 'varchar(255)'
 	}
     
-    def beforeInsert() {
+    def beforeInsert() throws Exception {
         log.info "Start beforeInsert"
 		liid = LIEncryption.encrypt(liid)
         targetid_type = LIEncryption.encrypt(targetid_type)
 		msisdn = LIEncryption.encrypt(msisdn)
-        imei = LIEncryption.encrypt(imei)
+        imei = imei?LIEncryption.encrypt(imei):imei
 	    //warrant_date = LIEncryption.encrypt(warrant_date)
 	    reference_name = LIEncryption.encrypt(reference_name)
 	    lemf_ip = LIEncryption.encrypt(lemf_ip)
@@ -77,7 +78,7 @@ class WarrantEncrypt {
 		liid = LIEncryption.encrypt(liid)
         targetid_type = LIEncryption.encrypt(targetid_type)
 		msisdn = LIEncryption.encrypt(msisdn)
-        imei = LIEncryption.encrypt(imei)
+		imei = imei?LIEncryption.encrypt(imei):imei
 	    //warrant_date = LIEncryption.encrypt(warrant_date)
 	    reference_name = LIEncryption.encrypt(reference_name)
 	    lemf_ip = LIEncryption.encrypt(lemf_ip)
@@ -96,7 +97,7 @@ class WarrantEncrypt {
 		liid = LIEncryption.decrypt(liid)
         targetid_type = LIEncryption.decrypt(targetid_type)
 		msisdn = LIEncryption.decrypt(msisdn)
-        imei = LIEncryption.decrypt(imei)
+        imei = imei?LIEncryption.decrypt(imei):imei
 	    //warrant_date = LIEncryption.decrypt(warrant_date)
 	    reference_name = LIEncryption.decrypt(reference_name)
 	    lemf_ip = LIEncryption.decrypt(lemf_ip)
@@ -110,4 +111,9 @@ class WarrantEncrypt {
 	    //end_datetime = LIEncryption.decrypt(end_datetime)
         observations = LIEncryption.decrypt(observations)
 	}
+
+	/*def beforeValidate() {
+		log.debug "warrant_date: $warrant_date"
+		log.debug "begin_datetime: $begin_datetime"
+	}*/
 }

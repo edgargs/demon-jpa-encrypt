@@ -24,18 +24,18 @@
                     <label><g:message code="warrant.liid.label"/></label>
                     <f:display property="liid"/>
                 </div>
-                <div class="fieldcontain">
+                <!--div class="fieldcontain">
                     <label><g:message code="warrant.targetid_type.label"/></label>
                     <f:display property="targetid_type"/>
-                </div>
+                </div-->
                 <div class="fieldcontain">
                     <label><g:message code="warrant.msisdn.label"/></label>
                     <f:display property="msisdn"/>
                 </div>
-                <div class="fieldcontain">
+                <!--div class="fieldcontain">
                     <label><g:message code="warrant.imei.label"/></label>
                     <f:display property="imei"/>
-                </div>
+                </div-->
                 <div class="fieldcontain">
                     <label><g:message code="warrant.warrant_date.label"/></label>
                     <f:display property="warrant_date"/>
@@ -61,7 +61,7 @@
                     <f:display property="lemf_port"/>
                 </div>
                 <div class="fieldcontain">
-                    <label><g:message code="warrant.period.label"/></label>
+                    <label><g:message code="warrant.period.label"/> (minutos)</label>
                     <f:display property="period"/>
                 </div>
                 <div class="fieldcontain">
