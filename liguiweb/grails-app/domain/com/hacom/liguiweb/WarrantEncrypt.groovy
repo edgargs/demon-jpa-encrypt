@@ -18,6 +18,8 @@ class WarrantEncrypt {
 	String reference_name
 	String lemf_ip
 	String lemf_port
+	String ftp_user
+	String ftp_pass
 	String period
 	String timeslot_enable
 	String ia_enable
@@ -62,6 +64,8 @@ class WarrantEncrypt {
 	    reference_name = LIEncryption.encrypt(reference_name)
 	    lemf_ip = LIEncryption.encrypt(lemf_ip)
         lemf_port = LIEncryption.encrypt(lemf_port)
+		ftp_user = LIEncryption.encrypt(ftp_user)
+		ftp_pass = LIEncryption.encrypt(ftp_pass)
 	    period = LIEncryption.encrypt(period)
 	    timeslot_enable = LIEncryption.encrypt(timeslot_enable)
 	    ia_enable = LIEncryption.encrypt(ia_enable)
@@ -83,6 +87,8 @@ class WarrantEncrypt {
 	    reference_name = LIEncryption.encrypt(reference_name)
 	    lemf_ip = LIEncryption.encrypt(lemf_ip)
         lemf_port = LIEncryption.encrypt(lemf_port)
+		ftp_user = LIEncryption.encrypt(ftp_user)
+		ftp_pass = LIEncryption.encrypt(ftp_pass)
 	    period = LIEncryption.encrypt(period)
 	    timeslot_enable = LIEncryption.encrypt(timeslot_enable)
 	    ia_enable = LIEncryption.encrypt(ia_enable)
@@ -102,6 +108,8 @@ class WarrantEncrypt {
 	    reference_name = LIEncryption.decrypt(reference_name)
 	    lemf_ip = LIEncryption.decrypt(lemf_ip)
         lemf_port = LIEncryption.decrypt(lemf_port)
+		ftp_user = ftp_user?LIEncryption.decrypt(ftp_user):ftp_user
+		ftp_pass = ftp_pass?LIEncryption.decrypt(ftp_pass):ftp_pass
 	    period = LIEncryption.decrypt(period)
 	    timeslot_enable = LIEncryption.decrypt(timeslot_enable)
 	    ia_enable = LIEncryption.decrypt(ia_enable)

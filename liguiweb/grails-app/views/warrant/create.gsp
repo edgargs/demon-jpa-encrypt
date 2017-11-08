@@ -34,15 +34,24 @@
                         <!--f:field property="imei"/-->
                         <f:field property="warrant_date"/>
                         <f:field property="reference_name"/>
-                        <f:field property="begin_datetime"/>
-                        <f:field property="end_datetime"/>
+                        <f:field property="li_type"/>
+                        <f:field property="begin_datetime">
+                            <g:datePicker name="${property}" value="${value}"
+                                          noSelection="['':'-Choose-']"/>
+                        </f:field>
+                        <f:field property="end_datetime">
+                            <g:datePicker name="${property}" value="${value}"
+                                          noSelection="['':'-Choose-']"/>
+                        </f:field>
                         <f:field property="lemf_ip"/>
                         <f:field property="lemf_port"/>
-                        <f:field property="period" label="${message(code: 'warrant.period.label', default: 'Update')} (minutos)"/>
-                        <f:field property="li_type"/>
+                        <f:field property="ftp_user"/>
+                        <f:field property="ftp_pass"/>
                         <f:field property="observations">
                             <g:textArea name="${property}" value="${value}" rows="5" cols="40"/>
                         </f:field>
+
+                        <f:field property="period" label="${message(code: 'warrant.period.label', default: 'Update')} (minutos)"/>
                     </f:with>
                 </fieldset>
                 <fieldset class="buttons">

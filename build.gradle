@@ -12,8 +12,10 @@ buildscript {
 
 ext {
     grailsApps = ['liguiweb']
-	springBootApps = ['limanager']
+	springBootApps = ['limanager','liwsmanager']
 }
+
+apply plugin: 'groovy'
 
 subprojects { project ->
     boolean isGrailsApp = grailsApps.contains(project.name)

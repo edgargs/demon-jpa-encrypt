@@ -1,3 +1,5 @@
 include 'liguiweb'
+include 'liwebserver'
 include 'limanager'
+include 'liwsmanager'
 include 'liutil'

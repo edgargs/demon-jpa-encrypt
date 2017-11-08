@@ -18,6 +18,8 @@ class Warrant {
 	String reference_name
 	String lemf_ip
 	int lemf_port
+	String ftp_user
+	String ftp_pass
 	int period = 1
 	int timeslot_enable
 	int ia_enable
@@ -35,6 +37,10 @@ class Warrant {
 		li_type inList: [1,2]
 		filepath nullable: true
 		period min: 1
+
+		/*end_datetime validator: {
+			if (begin_datetime.after(end_datetime)) return ['yearTooBig']
+		}*/
     }
 
 	static mapping = {

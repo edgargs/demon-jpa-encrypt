@@ -45,6 +45,10 @@
                     <f:display property="reference_name"/>
                 </div>
                 <div class="fieldcontain">
+                    <label><g:message code="warrant.li_type.label"/></label>
+                    <f:display property="li_type"/>
+                </div>
+                <div class="fieldcontain">
                     <label><g:message code="warrant.begin_datetime.label"/></label>
                     <f:display property="begin_datetime"/>
                 </div>
@@ -61,16 +65,21 @@
                     <f:display property="lemf_port"/>
                 </div>
                 <div class="fieldcontain">
-                    <label><g:message code="warrant.period.label"/> (minutos)</label>
-                    <f:display property="period"/>
+                    <label><g:message code="warrant.ftp_user.label"/></label>
+                    <f:display property="ftp_user"/>
                 </div>
                 <div class="fieldcontain">
-                    <label><g:message code="warrant.li_type.label"/></label>
-                    <f:display property="li_type"/>
+                    <label><g:message code="warrant.ftp_pass.label"/></label>
+                    <f:display property="ftp_pass"/>
                 </div>
                 <div class="fieldcontain">
                     <label><g:message code="warrant.observations.label"/></label>
                     <f:display property="observations"/>
+                </div>
+
+                <div class="fieldcontain">
+                    <label><g:message code="warrant.period.label"/> (minutos)</label>
+                    <f:display property="period"/>
                 </div>
             </f:with>
             <g:form resource="${this.warrant}" method="DELETE">

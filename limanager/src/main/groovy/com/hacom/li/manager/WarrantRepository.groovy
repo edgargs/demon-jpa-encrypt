@@ -13,7 +13,12 @@ interface WarrantRepository extends JpaRepository<Warrant, Long>{
     List<Warrant> findByStatus(int status)
 
     @Modifying
-    @Query("UPDATE Warrant SET status=?1,lastUpdated=?2 WHERE warrantid=?3")
+    @Query("UPDATE Warrant SET status=?1,lastUpdated=?2 WHERE id=?3")
     @Transactional
-    int setComplete(int status, Date lastUpdated, long warrantid)
+    int setComplete(int status, Date lastUpdated, long id)
+
+    @Modifying
+    @Query("UPDATE Warrant SET activation=?1,lastUpdated=?2 WHERE id=?3")
+    @Transactional
+    int activation(int activation, Date lastUpdated, long id)
 }

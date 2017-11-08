@@ -26,7 +26,7 @@ class WarrantListener {
     public void userPostLoad(Warrant ob) {
         ob.liid = LIEncryption.decrypt(ob.liid)
         ob.period = LIEncryption.decrypt(ob.period)
-        ob.imei = LIEncryption.decrypt(ob.imei)
+        ob.imei = ob.imei?LIEncryption.decrypt(ob.imei):null
         ob.msisdn = LIEncryption.decrypt(ob.msisdn)
     }
 }

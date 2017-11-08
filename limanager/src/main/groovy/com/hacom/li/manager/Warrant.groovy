@@ -43,4 +43,6 @@ class Warrant {
     Date lastUpdated
     int status
 
+    int activation
+
 }

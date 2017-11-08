@@ -31,20 +31,33 @@ class ManagerApplication {
 
 			// Verifica hilos ejecutandose
 			countWarrants?.each { it ->
-
-
 				if (now.after(it.begin_datetime) && now.before(it.end_datetime)) {
+					// Verifica activacion
+					if (it.activation == 0) {
+						SenderThread.sendPOSTJSON(it)
+						it.activation = 1
+						it.lastUpdated = new Date()
+						repository.activation(it.activation,it.lastUpdated,it.id)
+					}
 					//log.debug "now: $now"
 					log.debug "ManagerApplication=$it.liid:$it.period"
 
 					verifyProcessLI(Integer.parseInt(it.liid),
 									Integer.parseInt(it.period),
-									Integer.parseInt(it.msisdn) );
+									Long.parseLong(it.msisdn) );
 				}
 			}
 			//Desactiva hilos
 			countWarrants?.each { it ->
 				if (now.after(it.end_datetime)) {
+
+					// Verifica activacion
+					if (it.activation == 1) {
+						SenderThread.sendPOSTJSON(it,2)
+						it.activation = 2
+						it.lastUpdated = new Date()
+						repository.activation(it.activation,it.lastUpdated,it.id)
+					}
 
 					detentionProcess(Integer.parseInt(it.liid) )
 					log.info "Outdate $it.liid"
@@ -54,13 +67,14 @@ class ManagerApplication {
 					repository.setComplete(it.status,it.lastUpdated,it.id)
 				}
 			}
+
 			sleep(timeRefresh*1000)
 		}
 	}
 
 	static ConcurrentHashMap<Integer,SenderThread> devices = new ConcurrentHashMap<>();
 
-	def verifyProcessLI(int liid, int period, int msisdn) {
+	def verifyProcessLI(int liid, int period, long msisdn) {
 		synchronized(devices) {
 			SenderThread hilo;
 
