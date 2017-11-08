@@ -2,7 +2,6 @@ package com.hacom.li
 
 import grails.web.RequestParameter
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.client.RestTemplate
 
 class WebserverController {
 
