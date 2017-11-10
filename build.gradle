@@ -11,7 +11,7 @@ buildscript {
 }
 
 ext {
-    grailsApps = ['liguiweb']
+    grailsApps = ['liguiweb','liwebserver']
 	springBootApps = ['limanager','liwsmanager']
 }
 
