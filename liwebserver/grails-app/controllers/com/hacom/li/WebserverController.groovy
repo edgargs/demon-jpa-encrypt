@@ -19,8 +19,25 @@ class WebserverController {
 		render warrantService.echo(p_liid)
 	}
 
-	def warrant(@RequestParameter('liid') String p_liid) {
-		render warrantService.find(p_liid)
+	def warrant() {
+		String p_liid = params.id
+		if (p_liid == null) {
+			render "Ingrese la direccion correcta."
+		} else {
+			String resp = warrantService.find(p_liid)
+			switch (resp) {
+				case "ACK":
+					String latitude = "-12"
+					String longitude = "-76"
+					render view: 'index', model: [latitude: latitude, longitude: longitude]
+					break;
+				case "ERR_CONN":
+					render "Error al conectar con el servicio. Pruebe en unos minutos."
+					break;
+				default:
+					render resp
+			}
+		}
 	}
 
 }

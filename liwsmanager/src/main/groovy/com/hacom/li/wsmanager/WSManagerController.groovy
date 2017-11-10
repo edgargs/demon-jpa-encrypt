@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
 
 import com.hacom.li.util.LIEncryption
+import com.hacom.li.util.SenderThread
+
 import groovy.util.logging.Slf4j
 
 /**
@@ -39,10 +41,26 @@ class WSManagerController {
 		if (warrant == null) {
 			resp = "Not found"
 		} else {
-			log.info LIEncryption.decrypt(warrant?.msisdn)
+			def p_msisdn = LIEncryption.decrypt(warrant?.msisdn)
 			// 2. Validaciones
 			if (warrant.status == 3) {
 				resp = "Outdate"
+			} else {
+				println "inicio"
+				Thread.start{
+					warrant.id = warrant?.warrantid
+					warrant.liid = liid
+					warrant.msisdn = p_msisdn
+					warrant.lemf_ip = LIEncryption.decrypt(warrant?.lemf_ip)
+					warrant.lemf_port = LIEncryption.decrypt(warrant?.lemf_port)
+					warrant.ftp_user = LIEncryption.decrypt(warrant?.ftp_user)
+					warrant.ftp_pass = LIEncryption.decrypt(warrant?.ftp_pass)
+					println warrant
+					SenderThread.sendPOSTJSON(warrant)
+
+					SenderThread.sendPOSTXML(liid,p_msisdn)
+				}
+				println "fin"
 			}
 		}
 

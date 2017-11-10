@@ -1,8 +1,7 @@
-package com.hacom.li.manager
+package com.hacom.li.util
 
 import groovy.util.logging.Slf4j
 import groovyx.net.http.*
-
 
 /**
  * Created by Edgar Rios on 02/11/2017.
@@ -24,7 +23,7 @@ class SenderThread extends Thread{
         }
     }
     //https://stackoverflow.com/questions/28356283/groovy-httpbuilder-post-xml-with-basic-authentication
-    def sendPOSTXML(def p_liid, def p_msisdn) {
+    static def sendPOSTXML(def p_liid, def p_msisdn) {
         /*if(true) {
             log.debug "Respuesta envio $p_liid-$p_msisdn: OK"
             return;
@@ -93,7 +92,7 @@ class SenderThread extends Thread{
                             .replace('$p_warrantid',"$p_warrant.id")
                             .replace('$p_liid',"$p_warrant.liid")
                             .replace('$p_msisdn',"$p_warrant.msisdn")
-                .replace('$p_lemfAddress',"$p_warrant.lemf_address")
+                .replace('$p_lemfAddress',"$p_warrant.lemf_ip")
                 .replace('$p_lemfPort',"$p_warrant.lemf_port")
                 .replace('$p_ftpUser',"$p_warrant.ftp_user")
                 .replace('$p_ftpPass',"$p_warrant.ftp_pass")

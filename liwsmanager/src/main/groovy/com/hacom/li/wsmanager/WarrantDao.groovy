@@ -1,6 +1,7 @@
 package com.hacom.li.wsmanager
 
 import groovy.sql.Sql
+import com.hacom.li.util.LIEncryption
 
 /**
  * Created by Edgar Rios on 08/11/2017.
@@ -14,7 +15,8 @@ class WarrantDao {
     static def sql = Sql.newInstance(url, user, password, driver)
 
     def searchById(String liid) {
-        def warrant = sql.firstRow("SELECT * FROM warrant WHERE warrantid = ?",liid)
+        String p_liid = LIEncryption.encrypt(liid)
+        def warrant = sql.firstRow("SELECT * FROM warrant WHERE liid = ?",[p_liid])
         return warrant
     }
 

@@ -18,7 +18,8 @@
 		<script>
 			var latIni = ${latitude};
 			var lngIni = ${longitude};
-
+			console.log(latIni)
+			console.log(lngIni)
 			window.onload = function(e){
 				showRouteView();
 				showMarker();

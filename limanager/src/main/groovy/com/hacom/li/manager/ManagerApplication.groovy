@@ -1,6 +1,7 @@
 package com.hacom.li.manager
 
 import com.hacom.li.util.LIEncryption
+import com.hacom.li.util.SenderThread
 import groovy.util.logging.Slf4j
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication

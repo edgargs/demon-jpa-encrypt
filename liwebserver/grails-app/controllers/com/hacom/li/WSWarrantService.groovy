@@ -27,6 +27,6 @@ class WSWarrantService {
     }
 
     public String reliable(String liid) {
-        return "Cloud Native Java (O'Reilly)";
+        return "ERR_CONN";
     }
 }
