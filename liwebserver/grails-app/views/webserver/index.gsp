@@ -1,30 +1,17 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<script
-		  src="https://code.jquery.com/jquery-3.2.1.min.js"
-		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		  crossorigin="anonymous"></script>
-		<script
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCHtrkNiJA_cCVVYwhRIgZRO26QqrvGaY"
-			type="text/javascript"></script>
-		
-		<asset:javascript src="show.js" />
-	</head>
-	<body>
-		
-		<div id="route_map_view" style="height:800px"></div>
-		
-		<script>
-			var latIni = ${latitude};
-			var lngIni = ${longitude};
-			console.log(latIni)
-			console.log(lngIni)
-			window.onload = function(e){
-				showRouteView();
-				showMarker();
-			}
+<%--
+  Created by IntelliJ IDEA.
+  User: Edgar Rios
+  Date: 10/11/2017
+  Time: 11:36 AM
+--%>
 
-		</script>
-	</body
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html>
+<head>
+    <title></title>
+</head>
+
+<body>
+
+</body>
 </html>
